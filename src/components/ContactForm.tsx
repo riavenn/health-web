@@ -49,7 +49,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ contactRef }) => {
             <div className="mb-6">
                             <select
                 defaultValue=""
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-700 text-base"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-gray-700 text-base appearance-none"
               >
                 <option value="" disabled>
                   Hizmet Türü Seçiniz

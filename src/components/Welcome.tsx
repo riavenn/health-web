@@ -7,8 +7,8 @@ interface WelcomeProps {
 
 const Welcome: React.FC<WelcomeProps> = ({ welcomeRef }) => {
   return (
-        <section ref={welcomeRef} className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section ref={welcomeRef} className="py-20 md:py-28 bg-white px-4">
+      <div className="container mx-auto grid md:grid-cols-2 gap-12 items-center px-4 md:px-0">
         <div className="relative h-96">
           <div className="absolute top-0 left-0 w-3/4 h-3/4">
             <Image
