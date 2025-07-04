@@ -1,8 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Navbar: React.FC = () => {
-  const navLinks = ["Anasayfa", "Hakkımızda", "Hizmetler", "Doktorlarımız", "İletişim"];
+interface NavbarProps {
+  welcomeRef: React.RefObject<HTMLDivElement>;
+  servicesRef: React.RefObject<HTMLDivElement>;
+  doctorsRef: React.RefObject<HTMLDivElement>;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ welcomeRef, servicesRef, doctorsRef }) => {
+  const navLinks = [
+    { name: "Anasayfa", ref: null },
+    { name: "Hakkımızda", ref: welcomeRef },
+    { name: "Hizmetler", ref: servicesRef },
+    { name: "Doktorlarımız", ref: doctorsRef },
+    { name: "İletişim", ref: null }, // İletişim için ref eklenmedi
+  ];
+
+  const handleScroll = (ref: React.RefObject<HTMLDivElement> | null) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    } else if (!ref) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
@@ -13,9 +33,13 @@ const Navbar: React.FC = () => {
         </div>
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
-            <Link key={link} href={`/${link.toLowerCase()}`} className="text-gray-600 hover:text-blue-500 transition duration-300">
-              {link}
-            </Link>
+            <button
+              key={link.name}
+              onClick={() => handleScroll(link.ref)}
+              className="text-gray-600 hover:text-blue-500 transition duration-300 bg-transparent border-none cursor-pointer"
+            >
+              {link.name}
+            </button>
           ))}
         </div>
         <div>

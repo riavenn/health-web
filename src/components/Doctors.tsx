@@ -19,9 +19,13 @@ const doctors = [
   { name: 'Dr. Emine Doğan', title: 'Psikiyatrist', imageUrl: 'https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg' },
 ];
 
-const Doctors: React.FC = () => {
+interface DoctorsProps {
+  doctorsRef: React.RefObject<HTMLDivElement>;
+}
+
+const Doctors: React.FC<DoctorsProps> = ({ doctorsRef }) => {
   return (
-    <section className="py-20 bg-white">
+        <section ref={doctorsRef} className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-800">Doktorlarımız</h2>

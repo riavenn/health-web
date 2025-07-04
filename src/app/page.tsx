@@ -11,16 +11,22 @@ import Testimonials from '../components/Testimonials';
 import Footer from '../components/Footer';
 
 export default function Home() {
-  const servicesRef = useRef<HTMLDivElement>(null);
+  const welcomeRef = useRef<HTMLDivElement>(null!);
+  const servicesRef = useRef<HTMLDivElement>(null!);
+  const doctorsRef = useRef<HTMLDivElement>(null!);
 
   return (
     <main>
       <TopBar />
-      <Navbar />
+      <Navbar
+        welcomeRef={welcomeRef}
+        servicesRef={servicesRef}
+        doctorsRef={doctorsRef}
+      />
       <Header servicesRef={servicesRef} />
-      <Welcome />
+      <Welcome welcomeRef={welcomeRef} />
       <Services servicesRef={servicesRef} />
-      <Doctors />
+      <Doctors doctorsRef={doctorsRef} />
       <Testimonials />
       <Footer />
     </main>
