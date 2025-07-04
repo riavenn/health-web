@@ -56,7 +56,11 @@ const Testimonials: React.FC = () => {
           spaceBetween={50}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          autoplay={{ delay: 5000 }}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false
+          }}
+          speed={1000}
           loop={true}
           className="!pb-12"
         >

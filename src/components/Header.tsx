@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ servicesRef }) => {
   return (
     <header
       className="relative h-screen bg-cover bg-center flex items-center"
-      style={{ backgroundImage: "url('https://i.ibb.co/gZqxXpf2/29791-min.jpg')" }}>
+      style={{ backgroundImage: "url('https://images.pexels.com/photos/32213424/pexels-photo-32213424.jpeg')" }}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10 container mx-auto text-white px-4">
         <div className="max-w-2xl">

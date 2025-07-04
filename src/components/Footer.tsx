@@ -2,7 +2,36 @@ import React from 'react';
 import Link from 'next/link';
 import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  welcomeRef: React.RefObject<HTMLDivElement>;
+  servicesRef: React.RefObject<HTMLDivElement>;
+  doctorsRef: React.RefObject<HTMLDivElement>;
+}
+
+const Footer: React.FC<FooterProps> = ({ welcomeRef, servicesRef, doctorsRef }) => {
+  const handleScroll = (ref: React.RefObject<HTMLDivElement> | null) => {
+    if (ref && ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    } else if (!ref) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const quickLinks = [
+    { name: "Anasayfa", ref: null },
+    { name: "Hakkımızda", ref: welcomeRef },
+    { name: "Hizmetler", ref: servicesRef },
+    { name: "Doktorlarımız", ref: doctorsRef },
+  ];
+
+  const servicesLinks = [
+    'Kardiyoloji',
+    'Nöroloji',
+    'Ortopedi',
+    'Pediatri',
+    'Dermatoloji',
+    'Göz Hastalıkları',
+  ];
   return (
     <footer className="bg-gray-800 text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -24,11 +53,11 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-xl font-semibold mb-4">Hizmetler</h4>
             <ul className="space-y-2">
-              <li><Link href="/hizmetler/kardiyoloji" className="text-gray-400 hover:text-white">Kardiyoloji</Link></li>
-              <li><Link href="/hizmetler/noroloji" className="text-gray-400 hover:text-white">Nöroloji</Link></li>
-              <li><Link href="/hizmetler/ortopedi" className="text-gray-400 hover:text-white">Ortopedi</Link></li>
-              <li><Link href="/hizmetler/pediatri" className="text-gray-400 hover:text-white">Pediatri</Link></li>
-              <li><Link href="/hizmetler/dermatoloji" className="text-gray-400 hover:text-white">Dermatoloji</Link></li>
+              {servicesLinks.map(service => (
+                <li key={service}>
+                  <span className="text-gray-400 hover:text-white">{service}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -36,10 +65,16 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-xl font-semibold mb-4">Hızlı Linkler</h4>
             <ul className="space-y-2">
-              <li><Link href="/hakkimizda" className="text-gray-400 hover:text-white">Hakkımızda</Link></li>
-              <li><Link href="/doktorlarimiz" className="text-gray-400 hover:text-white">Doktorlarımız</Link></li>
-              <li><Link href="/iletisim" className="text-gray-400 hover:text-white">İletişim</Link></li>
-              <li><Link href="/randevu-al" className="text-gray-400 hover:text-white">Randevu Al</Link></li>
+              {quickLinks.map(link => (
+                <li key={link.name}>
+                  <button 
+                    onClick={() => handleScroll(link.ref)} 
+                    className="bg-transparent border-none p-0 m-0 text-left text-gray-400 hover:text-white cursor-pointer"
+                  >
+                    {link.name}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
