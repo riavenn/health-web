@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope, FaPhone } from 'react-i
 
 const TopBar: React.FC = () => {
   return (
-    <div className="bg-slate-100 p-2">
+    <div className="bg-slate-100 p-2 hidden md:block">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <a href="#" aria-label="Facebook" className="text-gray-600 hover:text-blue-600">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaFacebook, FaInstagram, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
 
 interface FooterProps {
@@ -38,7 +39,10 @@ const Footer: React.FC<FooterProps> = ({ welcomeRef, servicesRef, doctorsRef }) 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Column 1: Logo and Socials */}
           <div>
-            <h3 className="text-2xl font-bold mb-4">Health Project</h3>
+            <div className="flex items-center mb-4">
+              <Image src="https://i.ibb.co/tpwqtzBx/1-removebg-preview.png" alt="Nismed Logo" width={50} height={50} className="mr-3" />
+              <h3 className="text-2xl font-bold">NISMED</h3>
+            </div>
             <p className="text-gray-400 mb-4">
               Sağlığınız için en doğru adres.
             </p>
@@ -67,8 +71,8 @@ const Footer: React.FC<FooterProps> = ({ welcomeRef, servicesRef, doctorsRef }) 
             <ul className="space-y-2">
               {quickLinks.map(link => (
                 <li key={link.name}>
-                  <button 
-                    onClick={() => handleScroll(link.ref)} 
+                  <button
+                    onClick={() => handleScroll(link.ref)}
                     className="bg-transparent border-none p-0 m-0 text-left text-gray-400 hover:text-white cursor-pointer"
                   >
                     {link.name}
